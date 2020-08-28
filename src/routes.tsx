@@ -30,7 +30,7 @@ const Routes: React.FC = () => (
           height: 20,
         },
         labelStyle: {
-          fontFamily: 'Roboto_400',
+          /**fontFamily: 'Roboto_400', */
           fontSize: 11,
           marginTop: 5,
         },
@@ -87,7 +87,7 @@ const Routes: React.FC = () => (
       }
       } />
     </Navigator>
-  </NavigationContainer>
+  </NavigationContainer >
 );
 
 export default Routes;
