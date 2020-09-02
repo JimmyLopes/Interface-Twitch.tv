@@ -7,7 +7,7 @@ export const Container = styled.View`
 
 export const HeadingText = styled.View`
     color: ${colors.black};
-    /*font-family: roboto_700; */
+    font-family: roboto_700;
     font-size: 30px;
 
 `;

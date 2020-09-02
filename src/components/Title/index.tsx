@@ -5,8 +5,7 @@ import { Container } from './styles';
 
 const Title: React.FC = ({ children }) => {
   return (
-    <Container>{children}
-    </Container>
+    <Container>{children}</Container>
   );
 };
 

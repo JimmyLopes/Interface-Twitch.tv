@@ -1,11 +1,14 @@
 import React from 'react';
 import { View, FlatList } from 'react-native';
 
-import { Wrapper, Container, Main } from './styles';
-
 import Header from '../../components/Header';
 import Heading from '../../components/Heading';
 import Title from '../../components/Title';
+import CategoryList from '../../components/CategoryList';
+import StreamList from '../../components/StreamList';
+import ChannelList from '../../components/ChannelList';
+
+import { Wrapper, Container, Main } from './styles';
 
 interface Item {
   key: string;
@@ -18,7 +21,7 @@ const Following: React.FC = () => {
     const items: Item[] = [
       {
         key: 'PAGE_HEADING',
-        render: () => <Heading>Following</Heading>
+        render: () => <Heading>Following</Heading>,
       },
 
       {
@@ -26,18 +29,18 @@ const Following: React.FC = () => {
         render: () => <Title>Followed Categories</Title>,
         isTitle: true,
       },
-      { key: 'C1', render: () => <View /> },
+      { key: 'C1', render: () => <CategoryList /> },
 
       {
         key: 'LIVE_CHANNELS',
         render: () => <Title>Live Channels</Title>,
         isTitle: true,
       },
-      { key: 'C2', render: () => <View /> },
+      { key: 'C2', render: () => <StreamList /> },
 
       {
         key: 'CONTINUE_WATCHING',
-        render: () => <Title>Continue Watching</Title>,
+        render: () => <View />,
         isTitle: true,
       },
       { key: 'C3', render: () => <View /> },
@@ -47,13 +50,12 @@ const Following: React.FC = () => {
         render: () => <Title>Offline Channels</Title>,
         isTitle: true,
       },
-      { key: 'C4', render: () => <View /> },
+      { key: 'C4', render: () => <ChannelList /> },
     ];
 
-    //Array que contem os elementos titulos
     const indices: number[] = [];
 
-    items.forEach((items, index) => items.isTitle && indices.push(index));
+    items.forEach((item, index) => item.isTitle && indices.push(index));
 
     return {
       data: items,
@@ -70,9 +72,9 @@ const Following: React.FC = () => {
           <FlatList<Item>
             data={data}
             renderItem={({ item }) => item.render()}
-            keyExtractor={item => item.key}
+            keyExtractor={(item) => item.key}
             stickyHeaderIndices={indices}
-            //Refresh Effect
+            // Refresh Effect
             onRefresh={() => { }}
             refreshing={false}
           />
